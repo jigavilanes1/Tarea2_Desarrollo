@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link href="https://blog.artegrafico.net/wp-content/uploads/2019/03/699748-icon-102-document-file-xml-512.png" rel="icon">
+    <link href="css/estiloi.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="container">
+        <h2>-----------</h2>
+        <h2>Calculadora</h2>
+        <h2>-----------</h2>
+        <label>Ingrese un número</label>
+        <input type="text" id="num1"/><br><br><br>
+        <label>Ingrese otro número</label>
+        <input type="text" id="num2"/>
+        <h1 id="res"></h1>
+        <button id="sumar" onclick="sumar();"> Sumar </button>
+        <button id="restar" onclick="restar();"> Restar </button>
+        <button id="multiplicar" onclick="multiplicar();"> Multiplicar </button>
+        <button id="dividir" onclick="dividir();"> Dividir </button>
+    
+    </div>
+   
+    <script>
+        function sumar() {
+            let num1 = document.querySelector("#num1").value;
+            let num2 = document.querySelector("#num2").value;
+            let res = document.querySelector("#res");
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "Logica.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    res.innerHTML = this.responseText;
+                }
+            }
+            let opera = "sumar";
+            let data = JSON.stringify({"num1":num1, "num2":num2, "opera":opera});
+            xhr.send(data);
+        }
+
+        function restar() {
+            let num1 = document.querySelector("#num1").value;
+            let num2 = document.querySelector("#num2").value;
+            let res = document.querySelector("#res");
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "Logica.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    res.innerHTML = this.responseText;
+                }
+            }
+            let opera = "restar";
+            let data = JSON.stringify({"num1":num1, "num2":num2, "opera":opera});
+            xhr.send(data);
+        }
+
+        function multiplicar() {
+            let num1 = document.querySelector("#num1").value;
+            let num2 = document.querySelector("#num2").value;
+            let res = document.querySelector("#res");
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "Logica.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    res.innerHTML = this.responseText;
+                }
+            }
+            let opera = "multiplicar";
+            let data = JSON.stringify({"num1":num1, "num2":num2, "opera":opera});
+            xhr.send(data);
+        }
+
+        function dividir() {
+            let num1 = document.querySelector("#num1").value;
+            let num2 = document.querySelector("#num2").value;
+            let res = document.querySelector("#res");
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "Logica.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    res.innerHTML = this.responseText;
+                }
+            }
+            let opera = "dividir";
+            let data = JSON.stringify({"num1":num1, "num2":num2, "opera":opera});
+            xhr.send(data);
+        }
+    </script>
+</body>
+</html>
